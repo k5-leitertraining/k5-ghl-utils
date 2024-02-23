@@ -4,6 +4,7 @@ import { updateSubmitButton } from './tools/updateSubmitButton'
 export const validateEmail = ({
   errorMessage = 'Mit dieser E-Mail Adresse wurde dieser Kurs bereits gebucht oder eine Ortsgruppe erstellt. Bitte verwende eine andere E-Mail Adresse.',
   courseId = 'generalCourseParticipantOrCommunityMember',
+  localDev = false,
 } = {}) => {
   //////////////////////////////
   // add input event listener //
@@ -17,6 +18,7 @@ export const validateEmail = ({
       target: e.target,
       errorMessage,
       courseId,
+      localDev,
     })
   })
 

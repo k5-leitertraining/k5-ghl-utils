@@ -39,7 +39,7 @@ add the following code snippet in your form you want to test:
 ```html
 <script type="module" src="http://localhost:5173/@vite/client"></script>
 <script type="module">
-  import { validateEmail } from 'http://localhost:5173/src/main.ts'
+  import { validateEmail } from 'http://localhost:5173/src/main.dev.ts'
 
   validateEmail({
     errorMessage:

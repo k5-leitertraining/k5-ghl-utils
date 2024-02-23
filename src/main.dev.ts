@@ -1,3 +1,14 @@
-import { validateEmail } from './main'
+import { validateEmail as _validateEmail } from './main'
 
-validateEmail()
+export const validateEmail: typeof _validateEmail = (
+  { localDev, ...rest } = {},
+  ...args
+) => {
+  return _validateEmail(
+    {
+      ...rest,
+      localDev: localDev ?? true,
+    },
+    ...args,
+  )
+}

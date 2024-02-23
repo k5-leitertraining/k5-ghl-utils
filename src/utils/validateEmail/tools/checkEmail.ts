@@ -7,10 +7,12 @@ const _checkEmail = async ({
   target,
   errorMessage,
   courseId,
+  localDev = false,
 }: {
   target: EventTarget
   errorMessage: string
   courseId: string
+  localDev?: boolean
 }) => {
   if (!(target instanceof HTMLInputElement)) return
   const email = target.value
@@ -18,8 +20,11 @@ const _checkEmail = async ({
   if (!email) return
   lastAbortController = new AbortController()
   const signal = lastAbortController.signal
+  const host = localDev
+    ? 'http://localhost:9999'
+    : 'https://k5-leitertraining.de'
   const result = await fetch(
-    `https://k5-leitertraining.de/.netlify/functions/is-registered?email=${email}&course=${courseId}`,
+    `${host}/.netlify/functions/is-registered?email=${email}&course=${courseId}`,
     { signal },
   )
     .then(
