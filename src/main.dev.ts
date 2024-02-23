@@ -1,3 +1,3 @@
-import { helloWorld } from './main'
+import { validateEmail } from './main'
 
-helloWorld()
+validateEmail()
