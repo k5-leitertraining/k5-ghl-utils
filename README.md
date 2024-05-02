@@ -20,6 +20,30 @@ Add the following code snippet in your form you want to use:
 </script>
 ```
 
+### Group Name Validation
+
+Checks, if a group name is correctly matching an organization name
+
+Add the following code snippet in your form you want to use:
+
+```html
+<script type="module">
+  import { validateGroupName } from 'https://k5-leitertraining.github.io/k5-ghl-utils/k5-ghl-utils.js'
+
+  validateGroupName({
+    errorMessage: 'Der eingegebene Gruppenname ist nicht korrekt.',
+    orgNameSelector: {
+      query:
+        '.multiselect__tags:has([name="G6SvkDtrlHDJKHY2jY5m"]) .multiselect__single',
+      getValue: (el) => el.textContent,
+    },
+    groupNameSelector: {
+      query: '[name="8WaTK0Z4tr7KRp72mHZz"]',
+    },
+  })
+</script>
+```
+
 # Contribution
 
 ## Setup
@@ -45,6 +69,25 @@ add the following code snippet in your form you want to test:
     errorMessage:
       'Mit dieser E-Mail Adresse wurde dieser Kurs bereits gebucht oder eine Ortsgruppe erstellt. Bitte verwende eine andere E-Mail Adresse.',
     courseId: 'generalCourseParticipantOrCommunityMember',
+  })
+</script>
+```
+
+```html
+<script type="module" src="http://localhost:5173/@vite/client"></script>
+<script type="module">
+  import { validateGroupName } from 'http://localhost:5173/src/main.dev.ts'
+
+  validateGroupName({
+    errorMessage: 'Der eingegebene Gruppenname ist nicht korrekt.',
+    orgNameSelector: {
+      query:
+        '.multiselect__tags:has([name="G6SvkDtrlHDJKHY2jY5m"]) .multiselect__single',
+      getValue: (el) => el.textContent,
+    },
+    groupNameSelector: {
+      query: '[name="8WaTK0Z4tr7KRp72mHZz"]',
+    },
   })
 </script>
 ```

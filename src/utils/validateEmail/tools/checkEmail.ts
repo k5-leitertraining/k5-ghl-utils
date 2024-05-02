@@ -1,6 +1,6 @@
-import { debounce } from './debounce'
-import { displayError } from './displayError'
-import { updateSubmitButton } from './updateSubmitButton'
+import { debounce } from '../../tools/debounce'
+import { displayError } from '../../tools/displayError'
+import { updateSubmitButton } from '../../tools/updateSubmitButton'
 
 let lastAbortController: AbortController
 const _checkEmail = async ({

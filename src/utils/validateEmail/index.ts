@@ -1,5 +1,5 @@
+import { updateSubmitButton } from '../tools/updateSubmitButton'
 import { checkEmail } from './tools/checkEmail'
-import { updateSubmitButton } from './tools/updateSubmitButton'
 
 export const validateEmail = ({
   errorMessage = 'Mit dieser E-Mail Adresse wurde dieser Kurs bereits gebucht oder eine Ortsgruppe erstellt. Bitte verwende eine andere E-Mail Adresse.',

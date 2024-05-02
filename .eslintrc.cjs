@@ -19,5 +19,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-throw-literal': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
+    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
   },
 }
