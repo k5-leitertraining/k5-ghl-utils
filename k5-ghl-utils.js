@@ -1,126 +1,129 @@
-const E = "opacity: 0.5; cursor: not-allowed;";
-let y;
-const b = (t) => {
-  var r, n;
-  y || (y = ((n = (r = document.querySelector("[type=submit]")) == null ? void 0 : r.style) == null ? void 0 : n.cssText) ?? "");
+var v = Object.defineProperty;
+var E = (t, e, n) => e in t ? v(t, e, { enumerable: !0, configurable: !0, writable: !0, value: n }) : t[e] = n;
+var g = (t, e, n) => (E(t, typeof e != "symbol" ? e + "" : e, n), n);
+const k = "opacity: 0.5; cursor: not-allowed;";
+let h;
+const y = (t) => {
+  var n, r;
+  h || (h = ((r = (n = document.querySelector("[type=submit]")) == null ? void 0 : n.style) == null ? void 0 : r.cssText) ?? "");
   const e = document.querySelector("[type=submit]");
-  return e ? (e.disabled = t, e.style.cssText = t ? y + E : y, e) : null;
-}, g = (t, e) => {
-  let r;
-  return (...n) => {
-    clearTimeout(r), r = window.setTimeout(() => {
-      t(...n);
+  return e ? (e.disabled = t, e.style.cssText = t ? h + k : h, e) : null;
+}, w = (t, e) => {
+  let n;
+  return (...r) => {
+    clearTimeout(n), n = window.setTimeout(() => {
+      t(...r);
     }, e);
   };
-}, h = ({
+}, p = ({
   shouldDisplayError: t,
   element: e,
-  errorMessage: r
+  errorMessage: n
 }) => {
-  var u, a;
-  (u = e.parentElement) != null && u.querySelector(".course-already-bought-error") || e.insertAdjacentHTML(
+  var i, a;
+  (i = e.parentElement) != null && i.querySelector(".course-already-bought-error") || e.insertAdjacentHTML(
     "afterend",
-    `<div class="error course-already-bought-error">${r}</div>`
+    `<div class="error course-already-bought-error">${n}</div>`
   );
-  const n = (a = e.parentElement) == null ? void 0 : a.querySelector(
+  const r = (a = e.parentElement) == null ? void 0 : a.querySelector(
     ".course-already-bought-error"
   );
-  n && (n.style.cssText = t ? "" : "display: none;");
+  r && (r.style.cssText = t ? "" : "display: none;");
 };
 let d;
-const v = async ({
+const q = async ({
   target: t,
   errorMessage: e,
-  courseId: r,
-  localDev: n = !1
+  courseId: n,
+  localDev: r = !1
 }) => {
   if (!(t instanceof HTMLInputElement))
     return;
-  const u = t.value;
-  if (d == null || d.abort(), !u)
+  const i = t.value;
+  if (d == null || d.abort(), !i)
     return;
   d = new AbortController();
   const a = d.signal, c = await fetch(
-    `${n ? "http://localhost:9999" : "https://k5-leitertraining.de"}/.netlify/functions/is-registered?email=${u}&course=${r}`,
+    `${r ? "http://localhost:9999" : "https://k5-leitertraining.de"}/.netlify/functions/is-registered?email=${i}&course=${n}`,
     { signal: a }
   ).then(
-    (i) => i.json()
-  ).catch((i) => {
-    console.log(i);
+    (l) => l.json()
+  ).catch((l) => {
+    console.log(l);
   }), s = !!(c != null && c.isAlreadyRegistered);
   t.setCustomValidity(s ? e : "");
-  const l = b(s);
-  l && h({
+  const u = y(s);
+  u && p({
     shouldDisplayError: s,
-    element: l,
+    element: u,
     errorMessage: e
-  }), h({
+  }), p({
     shouldDisplayError: s,
     element: t,
     errorMessage: e
   });
-}, V = g(v, 500), S = ({
+}, V = w(q, 500), $ = ({
   errorMessage: t = "Mit dieser E-Mail Adresse wurde dieser Kurs bereits gebucht oder eine Ortsgruppe erstellt. Bitte verwende eine andere E-Mail Adresse.",
   courseId: e = "generalCourseParticipantOrCommunityMember",
-  localDev: r = !1
+  localDev: n = !1
 } = {}) => {
   var a;
   (a = document.querySelector('[name="email"]')) == null || a.addEventListener("input", (o) => {
-    o.target && (b(!0), V({
+    o.target && (y(!0), V({
       target: o.target,
       errorMessage: t,
       courseId: e,
-      localDev: r
+      localDev: n
     }));
   });
-  const n = document.querySelector('[name="email"]'), u = n == null ? void 0 : n.value;
-  n == null || n.dispatchEvent(
+  const r = document.querySelector('[name="email"]'), i = r == null ? void 0 : r.value;
+  r == null || r.dispatchEvent(
     new Event("input", {
       bubbles: !0,
       cancelable: !0,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      value: u
+      value: i
     })
   );
 };
 let m;
-const q = async ({
+const S = async ({
   orgName: t,
   groupName: e,
-  localDev: r = !1,
-  onValid: n,
-  onInvalid: u,
+  localDev: n = !1,
+  onValid: r,
+  onInvalid: i,
   onEmptyInput: a
 }) => {
   if (m == null || m.abort(), !t || !e)
     return a();
   m = new AbortController();
   const o = m.signal, s = await fetch(
-    `${r ? "http://localhost:9999" : "https://k5-leitertraining.de"}/.netlify/functions/ortsgruppenname-is-valid?orgName=${t}&groupName=${e}`,
+    `${n ? "http://localhost:9999" : "https://k5-leitertraining.de"}/.netlify/functions/ortsgruppenname-is-valid?orgName=${t}&groupName=${e}`,
     { signal: o }
   ).then(
-    (i) => i.json()
-  ).catch((i) => {
-    if (i.name === "AbortError")
+    (l) => l.json()
+  ).catch((l) => {
+    if (l.name === "AbortError")
       return "aborted";
-    console.log(i);
+    console.log(l);
   });
   if (s === "aborted")
     return;
-  !!(s != null && s.isGroupNameValid) ? n() : u();
-}, w = g(q, 500), p = (t) => {
+  !!(s != null && s.isGroupNameValid) ? r() : i();
+}, L = w(S, 500), f = (t) => {
   const e = document.querySelector(t.query);
   return e ? t.getValue ? t.getValue(e) : e.value : "";
-}, f = (t, e) => {
-  let r = p(t);
-  e(r);
-  const n = () => {
-    const o = p(t);
-    r !== o && (r = o, e(o));
-  }, u = () => {
+}, b = (t, e) => {
+  let n = f(t);
+  e(n);
+  const r = () => {
+    const o = f(t);
+    n !== o && (n = o, e(o));
+  }, i = () => {
     const o = document.querySelector(t.query) ?? document.body, c = new MutationObserver(() => {
-      n();
+      r();
     });
     return c.observe(o, {
       attributes: !0,
@@ -133,36 +136,36 @@ const q = async ({
   }, a = () => {
     const o = document.querySelector(t.query);
     if (o)
-      return o.addEventListener("input", n), () => {
-        o.removeEventListener("input", n);
+      return o.addEventListener("input", r), () => {
+        o.removeEventListener("input", r);
       };
   };
-  return t.getValue ? u() : a();
-}, T = ({
+  return t.getValue ? i() : a();
+}, B = ({
   orgNameSelector: t,
   groupNameSelector: e,
-  errorMessage: r,
-  localDev: n = !1
+  errorMessage: n,
+  localDev: r = !1
 }) => {
-  let u = p(t), a = p(e);
+  let i = f(t), a = f(e);
   const o = (s) => {
-    const l = b(s);
-    l && h({
+    const u = y(s);
+    u && p({
+      element: u,
+      shouldDisplayError: s,
+      errorMessage: n
+    });
+    const l = document.querySelector(e.query);
+    l && p({
       element: l,
       shouldDisplayError: s,
-      errorMessage: r
-    });
-    const i = document.querySelector(e.query);
-    i && h({
-      element: i,
-      shouldDisplayError: s,
-      errorMessage: r
+      errorMessage: n
     });
   }, c = () => {
-    o(!1), b(!0), w({
-      orgName: u,
+    o(!1), y(!0), L({
+      orgName: i,
       groupName: a,
-      localDev: n,
+      localDev: r,
       onValid: () => {
         o(!1);
       },
@@ -174,13 +177,64 @@ const q = async ({
       }
     });
   };
-  f(t, (s) => {
-    u = s, c();
-  }), f(e, (s) => {
+  b(t, (s) => {
+    i = s, c();
+  }), b(e, (s) => {
     a = s, c();
   });
+}, T = (t) => new Promise((e) => setTimeout(e, t));
+class M {
+  constructor() {
+    g(this, "email", "");
+  }
+  trackEmailInput() {
+    var e;
+    (e = document.querySelector('input[type="email"]')) == null || e.addEventListener("input", (n) => {
+      const r = n.target;
+      this.email = r.value;
+    });
+  }
+  getEmail() {
+    return this.email;
+  }
+}
+const A = async ({
+  email: t,
+  localDev: e = !1
+}) => t ? (await fetch(
+  `${e ? "http://localhost:9999" : "https://k5-leitertraining.de"}/.netlify/functions/get-redirect-url?email=${t}`
+).then(
+  (a) => a.json()
+)).redirectUrl : "", N = `<svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+  <path class="opacity-75" fill="currentColor"
+    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+  </path>
+</svg>`, C = (t) => {
+  const e = document.createElement("div");
+  return e.innerHTML = N, e.className = "object-fill p-8 mx-auto size-32", t.appendChild(e), e;
+}, I = () => new Promise((t) => {
+  new MutationObserver((n, r) => {
+    for (const i of n)
+      i.type === "childList" && Array.from(i.addedNodes).find(
+        (c) => {
+          var s;
+          return c instanceof HTMLElement && (((s = c.classList) == null ? void 0 : s.contains("thank-you-message")) || c.querySelector(".thank-you-message"));
+        }
+      ) && (r.disconnect(), t());
+  }).observe(document.body, { childList: !0, subtree: !0 });
+}), G = async ({ localDev: t = !1 }) => {
+  await import("./style-l0sNRNKZ.js");
+  const e = new M();
+  e.trackEmailInput(), await I(), C(document.querySelector(".thank-you-message"));
+  const n = e.getEmail();
+  let r = "";
+  for (; !r; )
+    r = await A({ email: n, localDev: t }), await T(2500);
+  window.location.href = r;
 };
 export {
-  S as validateEmail,
-  T as validateGroupName
+  G as redirectAfterFormSubmission,
+  $ as validateEmail,
+  B as validateGroupName
 };
