@@ -44,6 +44,20 @@ Add the following code snippet in your form you want to use:
 </script>
 ```
 
+### Redirect After Form Submission
+
+Listens for a form submission, waits for the ghl contact of the entered e-mail to have a `contact.redirect_url` attribute and then redirects to that url.
+
+Add the following code snippet in your form you want to use:
+
+```html
+<script type="module">
+  import { redirectAfterFormSubmission } from 'https://k5-leitertraining.github.io/k5-ghl-utils/k5-ghl-utils.js'
+
+  redirectAfterFormSubmission({})
+</script>
+```
+
 # Contribution
 
 ## Setup
@@ -89,6 +103,15 @@ add the following code snippet in your form you want to test:
       query: '[name="8WaTK0Z4tr7KRp72mHZz"]',
     },
   })
+</script>
+```
+
+```html
+<script type="module" src="http://localhost:5173/@vite/client"></script>
+<script type="module">
+  import { redirectAfterFormSubmission } from 'http://localhost:5173/src/main.dev.ts'
+
+  redirectAfterFormSubmission({})
 </script>
 ```
 

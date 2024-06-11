@@ -1,5 +1,8 @@
-import { validateEmail as _validateEmail } from './main'
-import { validateGroupName as _validateGroupName } from './main'
+import {
+  redirectAfterFormSubmission as _redirectAfterFormSubmission,
+  validateEmail as _validateEmail,
+  validateGroupName as _validateGroupName,
+} from './main'
 
 const withLocalDev = <TFunction extends (...args: never[]) => unknown>(
   fn: TFunction,
@@ -21,3 +24,6 @@ const withLocalDev = <TFunction extends (...args: never[]) => unknown>(
 
 export const validateEmail = withLocalDev(_validateEmail)
 export const validateGroupName = withLocalDev(_validateGroupName)
+export const redirectAfterFormSubmission = withLocalDev(
+  _redirectAfterFormSubmission,
+)

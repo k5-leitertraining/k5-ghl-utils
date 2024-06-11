@@ -7,4 +7,7 @@
     "source.fixAll.eslint": "explicit"
   },
   "eslint.format.enable": false,
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  },
 }
