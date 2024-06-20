@@ -1,3 +1,5 @@
+import { appendStyleTo } from '@/style'
+
 import { delay } from '../tools/delay'
 import { EmailInputTracker } from './tools/EmailInputTracker'
 import { getRedirectUrl } from './tools/getRedirectUrl'
@@ -5,9 +7,6 @@ import { showWaitingAnimation } from './tools/showWaitingAnimation'
 import { trackFormSubmission } from './tools/trackFormSubmission'
 
 export const redirectAfterFormSubmission = async ({ localDev = false }) => {
-  // import styles
-  await import('@/style.css')
-
   // email input tracking
   const emailInputTracker = new EmailInputTracker()
   emailInputTracker.trackEmailInput()
@@ -16,7 +15,10 @@ export const redirectAfterFormSubmission = async ({ localDev = false }) => {
   await trackFormSubmission()
 
   // show waiting animation
-  showWaitingAnimation(document.querySelector('.thank-you-message')!)
+  const thankYouMessageElement =
+    document.querySelector<HTMLElement>('.thank-you-message')!
+  await appendStyleTo(thankYouMessageElement)
+  showWaitingAnimation(thankYouMessageElement)
 
   // get redirect URL
   const email = emailInputTracker.getEmail()
