@@ -54,7 +54,18 @@ Add the following code snippet in your form you want to use:
 <script type="module">
   import { redirectAfterFormSubmission } from 'https://k5-leitertraining.github.io/k5-ghl-utils/k5-ghl-utils.js'
 
-  redirectAfterFormSubmission({})
+  redirectAfterFormSubmission({
+    successMessage: (
+      redirectUrl,
+    ) => /*html*/ `<div style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-size: 18px; font-family: Barlow; font-weight: 500; width: 100%; max-width: 500px; margin: auto; min-height: 100px;">
+      <p><strong>Download erfolgreich</strong></p>
+      <p></p>
+      <p>Dein Dashboard wurde erfolgreich generiert und sollte nun automatisch heruntergeladen werden. Bitte überprüfe deinen Downloads Ordner.</p>
+      <p style="font-size: 14px; margin-top: 8px;">
+        Bitte klick <a href="${redirectUrl}">hier</a>, falls der Download nicht automatisch startet.
+      </p>
+    </div>`,
+  })
 </script>
 ```
 
@@ -111,7 +122,18 @@ add the following code snippet in your form you want to test:
 <script type="module">
   import { redirectAfterFormSubmission } from 'http://localhost:5173/src/main.dev.ts'
 
-  redirectAfterFormSubmission({})
+  redirectAfterFormSubmission({
+    successMessage: (
+      redirectUrl,
+    ) => /*html*/ `<div style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-size: 18px; font-family: Barlow; font-weight: 500; width: 100%; max-width: 500px; margin: auto; min-height: 100px;">
+      <p><strong>Download erfolgreich</strong></p>
+      <p></p>
+      <p>Dein Dashboard wurde erfolgreich generiert und sollte nun automatisch heruntergeladen werden. Bitte überprüfe deinen Downloads Ordner.</p>
+      <p style="font-size: 14px; margin-top: 8px;">
+        Bitte klick <a href="${redirectUrl}">hier</a>, falls der Download nicht automatisch startet.
+      </p>
+    </div>`,
+  })
 </script>
 ```
 
