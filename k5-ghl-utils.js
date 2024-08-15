@@ -1,13 +1,13 @@
 var E = Object.defineProperty;
-var v = (t, e, n) => e in t ? E(t, e, { enumerable: !0, configurable: !0, writable: !0, value: n }) : t[e] = n;
-var g = (t, e, n) => (v(t, typeof e != "symbol" ? e + "" : e, n), n);
-const k = "opacity: 0.5; cursor: not-allowed;";
+var k = (t, e, n) => e in t ? E(t, e, { enumerable: !0, configurable: !0, writable: !0, value: n }) : t[e] = n;
+var g = (t, e, n) => (k(t, typeof e != "symbol" ? e + "" : e, n), n);
+const q = "opacity: 0.5; cursor: not-allowed;";
 let y;
 const h = (t) => {
   var n, r;
   y || (y = ((r = (n = document.querySelector("[type=submit]")) == null ? void 0 : n.style) == null ? void 0 : r.cssText) ?? "");
   const e = document.querySelector("[type=submit]");
-  return e ? (e.disabled = t, e.style.cssText = t ? y + k : y, e) : null;
+  return e ? (e.disabled = t, e.style.cssText = t ? y + q : y, e) : null;
 }, w = (t, e) => {
   let n;
   return (...r) => {
@@ -31,7 +31,7 @@ const h = (t) => {
   r && (r.style.cssText = t ? "" : "display: none;");
 };
 let d;
-const q = async ({
+const S = async ({
   target: t,
   errorMessage: e,
   courseId: n,
@@ -62,14 +62,14 @@ const q = async ({
     element: t,
     errorMessage: e
   });
-}, V = w(q, 500), H = ({
+}, T = w(S, 500), G = ({
   errorMessage: t = "Mit dieser E-Mail Adresse wurde dieser Kurs bereits gebucht oder eine Ortsgruppe erstellt. Bitte verwende eine andere E-Mail Adresse.",
   courseId: e = "generalCourseParticipantOrCommunityMember",
   localDev: n = !1
 } = {}) => {
   var s;
   (s = document.querySelector('[name="email"]')) == null || s.addEventListener("input", (o) => {
-    o.target && (h(!0), V({
+    o.target && (h(!0), T({
       target: o.target,
       errorMessage: t,
       courseId: e,
@@ -88,7 +88,7 @@ const q = async ({
   );
 };
 let m;
-const S = async ({
+const V = async ({
   orgName: t,
   groupName: e,
   localDev: n = !1,
@@ -112,7 +112,7 @@ const S = async ({
   if (i === "aborted")
     return;
   !!(i != null && i.isGroupNameValid) ? r() : a();
-}, T = w(S, 500), f = (t) => {
+}, L = w(V, 500), f = (t) => {
   const e = document.querySelector(t.query);
   return e ? t.getValue ? t.getValue(e) : e.value : "";
 }, b = (t, e) => {
@@ -141,7 +141,7 @@ const S = async ({
       };
   };
   return t.getValue ? a() : s();
-}, B = ({
+}, U = ({
   orgNameSelector: t,
   groupNameSelector: e,
   errorMessage: n,
@@ -162,7 +162,7 @@ const S = async ({
       errorMessage: n
     });
   }, c = () => {
-    o(!1), h(!0), T({
+    o(!1), h(!0), L({
       orgName: a,
       groupName: s,
       localDev: r,
@@ -182,11 +182,11 @@ const S = async ({
   }), b(e, (i) => {
     s = i, c();
   });
-}, L = async (t) => {
-  const { default: e } = await import("./style-DC2QuTw5.js"), n = document.createElement("style");
-  n.innerHTML = e, t.appendChild(n);
-}, M = (t) => new Promise((e) => setTimeout(e, t));
-class A {
+}, v = async (t, e) => {
+  const { default: n } = await e(), r = document.createElement("style");
+  r.innerHTML = n, t.appendChild(r);
+}, M = (t) => v(t, () => import("./style-DC2QuTw5.js")), C = (t) => new Promise((e) => setTimeout(e, t));
+class N {
   constructor() {
     g(this, "email", "");
   }
@@ -201,22 +201,22 @@ class A {
     return this.email;
   }
 }
-const C = async ({
+const A = async ({
   email: t,
   localDev: e = !1
 }) => t ? (await fetch(
   `${e ? "http://localhost:9999" : "https://k5-leitertraining.de"}/.netlify/functions/get-redirect-url?email=${t}`
 ).then(
   (s) => s.json()
-)).redirectUrl : "", N = `<svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+)).redirectUrl : "", I = `<svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
   <path class="opacity-75" fill="currentColor"
     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
   </path>
-</svg>`, I = (t) => {
+</svg>`, x = (t) => {
   const e = document.createElement("div");
-  return e.innerHTML = N, e.className = "object-fill p-8 mx-auto size-32", t.appendChild(e), e;
-}, x = () => new Promise((t) => {
+  return e.innerHTML = I, e.className = "object-fill p-8 mx-auto size-32", t.appendChild(e), e;
+}, $ = () => new Promise((t) => {
   new MutationObserver((n, r) => {
     for (const a of n)
       a.type === "childList" && Array.from(a.addedNodes).find(
@@ -226,24 +226,27 @@ const C = async ({
         }
       ) && (r.disconnect(), t());
   }).observe(document.body, { childList: !0, subtree: !0 });
-}), G = async ({
+}), j = async ({
   localDev: t = !1,
   successMessage: e
 }) => {
-  const n = new A();
-  n.trackEmailInput(), await x();
+  const n = new N();
+  n.trackEmailInput(), await $();
   const r = document.querySelector(".thank-you-message");
-  await L(r), I(r);
+  await M(r), x(r);
   const a = n.getEmail();
   let s = "";
   for (; !s; )
-    s = await C({ email: a, localDev: t }), await M(2500);
+    s = await A({ email: a, localDev: t }), await C(2500);
   window.location.href = s;
   const o = typeof e == "function" ? e(s) : e;
   o && (r.innerHTML = o);
+}, H = () => v(document.head, () => import("./navbarStyle-Ctrt6S1n.js")), O = async () => {
+  await H();
 };
 export {
-  G as redirectAfterFormSubmission,
-  H as validateEmail,
-  B as validateGroupName
+  O as navbarControl,
+  j as redirectAfterFormSubmission,
+  G as validateEmail,
+  U as validateGroupName
 };
