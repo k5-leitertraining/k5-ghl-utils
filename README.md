@@ -69,6 +69,18 @@ Add the following code snippet in your form you want to use:
 </script>
 ```
 
+### Navbar Control
+
+Auto fills the navbar with centrally controlled items.
+
+```html
+<script type="module">
+  import { navbarControl } from 'https://k5-leitertraining.github.io/k5-ghl-utils/k5-ghl-utils.js'
+
+  navbarControl({})
+</script>
+```
+
 # Contribution
 
 ## Setup
@@ -134,6 +146,15 @@ add the following code snippet in your form you want to test:
       </p>
     </div>`,
   })
+</script>
+```
+
+```html
+<script type="module" src="http://localhost:5173/@vite/client"></script>
+<script type="module">
+  import { navbarControl } from 'http://localhost:5173/src/main.dev.ts'
+
+  navbarControl({})
 </script>
 ```
 

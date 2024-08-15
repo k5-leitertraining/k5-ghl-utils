@@ -1,4 +1,4 @@
-import { appendStyleTo } from '@/style'
+import { appendRootStyleTo } from '@/style'
 
 import { delay } from '../tools/delay'
 import { EmailInputTracker } from './tools/EmailInputTracker'
@@ -23,7 +23,7 @@ export const redirectAfterFormSubmission = async ({
   // show waiting animation
   const thankYouMessageElement =
     document.querySelector<HTMLElement>('.thank-you-message')!
-  await appendStyleTo(thankYouMessageElement)
+  await appendRootStyleTo(thankYouMessageElement)
   showWaitingAnimation(thankYouMessageElement)
 
   // get redirect URL

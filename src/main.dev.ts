@@ -1,4 +1,5 @@
 import {
+  navbarControl as _navbarControl,
   redirectAfterFormSubmission as _redirectAfterFormSubmission,
   validateEmail as _validateEmail,
   validateGroupName as _validateGroupName,
@@ -27,3 +28,4 @@ export const validateGroupName = withLocalDev(_validateGroupName)
 export const redirectAfterFormSubmission = withLocalDev(
   _redirectAfterFormSubmission,
 )
+export const navbarControl = withLocalDev(_navbarControl)

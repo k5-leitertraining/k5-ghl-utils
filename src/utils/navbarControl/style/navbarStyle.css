@@ -1,0 +1,53 @@
+body .nav-menu .nav-menu-item a[href="https://onecommunity.mn.co/sign_in"], body #nav-menu-popup .nav-menu .nav-menu-item a[href="https://onecommunity.mn.co/sign_in"]
+{
+  color: #fafafa;
+  padding-top: 16px;
+  padding-right: 30px;
+  padding-bottom: 16px;
+  padding-left: 30px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #f4e333;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: #f4e333;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #f4e333;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: #f4e333;
+  border-top-left-radius: 9999999999999px;
+  border-top-right-radius: 9999999999999px;
+  border-bottom-left-radius: 9999999999999px;
+  border-bottom-right-radius: 9999999999999px;
+  background-color: #f4e333;
+  box-shadow: 1px 1px 10px 0 hsla(0, 0%, 0%, 0.1);
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+  color: #26353a;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  border-top-color: hsla(224.0425531914894, 0%, 0%, 1);
+  border-right-color: hsla(224.0425531914894, 0%, 0%, 1);
+  border-bottom-color: hsla(224.0425531914894, 0%, 0%, 1);
+  border-left-color: hsla(224.0425531914894, 0%, 0%, 1);
+  background-color: #26353a !important;
+  color: #fafafa !important;
+  font-weight: 500;
+  padding-top: 12px;
+  padding-right: 20px;
+  padding-bottom: 12px;
+  padding-left: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+a[href="https://onecommunity.mn.co/sign_in"]:hover
+{
+  transform: scale(1.02) translate(0px, -3px);
+}
