@@ -1,14 +1,14 @@
-var Ke = Object.defineProperty;
-var Qe = (r, e, t) => e in r ? Ke(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[e] = t;
-var je = (r, e, t) => (Qe(r, typeof e != "symbol" ? e + "" : e, t), t);
-const Fe = "opacity: 0.5; cursor: not-allowed;";
+var Qe = Object.defineProperty;
+var Fe = (r, e, t) => e in r ? Qe(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[e] = t;
+var je = (r, e, t) => (Fe(r, typeof e != "symbol" ? e + "" : e, t), t);
+const et = "opacity: 0.5; cursor: not-allowed;";
 let he;
 const me = (r) => {
   var t, n;
   he || (he = ((n = (t = document.querySelector("[type=submit]")) == null ? void 0 : t.style) == null ? void 0 : n.cssText) ?? "");
   const e = document.querySelector("[type=submit]");
-  return e ? (e.disabled = r, e.style.cssText = r ? he + Fe : he, e) : null;
-}, Ve = (r, e) => {
+  return e ? (e.disabled = r, e.style.cssText = r ? he + et : he, e) : null;
+}, Pe = (r, e) => {
   let t;
   return (...n) => {
     clearTimeout(t), t = window.setTimeout(() => {
@@ -31,7 +31,7 @@ const me = (r) => {
   n && (n.style.cssText = r ? "" : "display: none;");
 };
 let G;
-const et = async ({
+const tt = async ({
   target: r,
   errorMessage: e,
   courseId: t,
@@ -62,14 +62,14 @@ const et = async ({
     element: r,
     errorMessage: e
   });
-}, tt = Ve(et, 500), xr = ({
+}, rt = Pe(tt, 500), br = ({
   errorMessage: r = "Mit dieser E-Mail Adresse wurde dieser Kurs bereits gebucht oder eine Ortsgruppe erstellt. Bitte verwende eine andere E-Mail Adresse.",
   courseId: e = "generalCourseParticipantOrCommunityMember",
   localDev: t = !1
 } = {}) => {
   var a;
   (a = document.querySelector('[name="email"]')) == null || a.addEventListener("input", (i) => {
-    i.target && (me(!0), tt({
+    i.target && (me(!0), rt({
       target: i.target,
       errorMessage: r,
       courseId: e,
@@ -88,7 +88,7 @@ const et = async ({
   );
 };
 let J;
-const rt = async ({
+const nt = async ({
   orgName: r,
   groupName: e,
   localDev: t = !1,
@@ -112,7 +112,7 @@ const rt = async ({
   if (d === "aborted")
     return;
   !!(d != null && d.isGroupNameValid) ? n() : s();
-}, nt = Ve(rt, 500), ye = (r) => {
+}, st = Pe(nt, 500), ye = (r) => {
   const e = document.querySelector(r.query);
   return e ? r.getValue ? r.getValue(e) : e.value : "";
 }, Ae = (r, e) => {
@@ -141,7 +141,7 @@ const rt = async ({
       };
   };
   return r.getValue ? s() : a();
-}, br = ({
+}, kr = ({
   orgNameSelector: r,
   groupNameSelector: e,
   errorMessage: t,
@@ -162,7 +162,7 @@ const rt = async ({
       errorMessage: t
     });
   }, o = () => {
-    i(!1), me(!0), nt({
+    i(!1), me(!0), st({
       orgName: s,
       groupName: a,
       localDev: n,
@@ -182,11 +182,11 @@ const rt = async ({
   }), Ae(e, (d) => {
     a = d, o();
   });
-}, Pe = async (r, e) => {
+}, Le = async (r, e) => {
   const { default: t } = await e(), n = document.createElement("style");
   n.innerHTML = t, r.appendChild(n);
-}, st = (r) => Pe(r, () => import("./style-DC2QuTw5.js")), at = (r) => new Promise((e) => setTimeout(e, r));
-class it {
+}, at = (r) => Le(r, () => import("./style-DC2QuTw5.js")), it = (r) => new Promise((e) => setTimeout(e, r));
+class ot {
   constructor() {
     je(this, "email", "");
   }
@@ -201,22 +201,22 @@ class it {
     return this.email;
   }
 }
-const ot = async ({
+const ct = async ({
   email: r,
   localDev: e = !1
 }) => r ? (await fetch(
   `${e ? "http://localhost:9999" : "https://k5-leitertraining.de"}/.netlify/functions/get-redirect-url?email=${r}`
 ).then(
   (a) => a.json()
-)).redirectUrl : "", ct = `<svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+)).redirectUrl : "", dt = `<svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
   <path class="opacity-75" fill="currentColor"
     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
   </path>
-</svg>`, dt = (r) => {
+</svg>`, ut = (r) => {
   const e = document.createElement("div");
-  return e.innerHTML = ct, e.className = "object-fill p-8 mx-auto size-32", r.appendChild(e), e;
-}, ut = () => new Promise((r) => {
+  return e.innerHTML = dt, e.className = "object-fill p-8 mx-auto size-32", r.appendChild(e), e;
+}, lt = () => new Promise((r) => {
   new MutationObserver((t, n) => {
     for (const s of t)
       s.type === "childList" && Array.from(s.addedNodes).find(
@@ -226,18 +226,18 @@ const ot = async ({
         }
       ) && (n.disconnect(), r());
   }).observe(document.body, { childList: !0, subtree: !0 });
-}), kr = async ({
+}), wr = async ({
   localDev: r = !1,
   successMessage: e
 }) => {
-  const t = new it();
-  t.trackEmailInput(), await ut();
+  const t = new ot();
+  t.trackEmailInput(), await lt();
   const n = document.querySelector(".thank-you-message");
-  await st(n), dt(n);
+  await at(n), ut(n);
   const s = t.getEmail();
   let a = "";
   for (; !a; )
-    a = await ot({ email: s, localDev: r }), await at(2500);
+    a = await ct({ email: s, localDev: r }), await it(2500);
   window.location.href = a;
   const i = typeof e == "function" ? e(a) : e;
   i && (n.innerHTML = i);
@@ -345,7 +345,7 @@ const f = _.arrayToEnum([
   "invalid_intersection_types",
   "not_multiple_of",
   "not_finite"
-]), lt = (r) => JSON.stringify(r, null, 2).replace(/"([^"]+)":/g, "$1:");
+]), ft = (r) => JSON.stringify(r, null, 2).replace(/"([^"]+)":/g, "$1:");
 class w extends Error {
   constructor(e) {
     super(), this.issues = [], this.addIssue = (n) => {
@@ -462,12 +462,12 @@ const W = (r, e) => {
   }
   return { message: t };
 };
-let Le = W;
-function ft(r) {
-  Le = r;
+let De = W;
+function ht(r) {
+  De = r;
 }
 function ve() {
-  return Le;
+  return De;
 }
 const ge = (r) => {
   const { data: e, path: t, errorMaps: n, issueData: s } = r, a = [...t, ...s.path || []], i = {
@@ -489,7 +489,7 @@ const ge = (r) => {
     path: a,
     message: o
   };
-}, ht = [];
+}, mt = [];
 function l(r, e) {
   const t = ve(), n = ge({
     issueData: e,
@@ -556,7 +556,7 @@ function _e(r, e, t, n) {
     throw new TypeError("Cannot read private member from an object whose class did not declare it");
   return t === "m" ? n : t === "a" ? n.call(r) : n ? n.value : e.get(r);
 }
-function De(r, e, t, n, s) {
+function ze(r, e, t, n, s) {
   if (n === "m")
     throw new TypeError("Private method is not writable");
   if (n === "a" && !s)
@@ -788,23 +788,23 @@ class g {
     return this.safeParse(null).success;
   }
 }
-const mt = /^c[^\s-]{8,}$/i, pt = /^[0-9a-z]+$/, yt = /^[0-9A-HJKMNP-TV-Z]{26}$/, vt = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/i, gt = /^[a-z0-9_-]{21}$/i, _t = /^[-+]?P(?!$)(?:(?:[-+]?\d+Y)|(?:[-+]?\d+[.,]\d+Y$))?(?:(?:[-+]?\d+M)|(?:[-+]?\d+[.,]\d+M$))?(?:(?:[-+]?\d+W)|(?:[-+]?\d+[.,]\d+W$))?(?:(?:[-+]?\d+D)|(?:[-+]?\d+[.,]\d+D$))?(?:T(?=[\d+-])(?:(?:[-+]?\d+H)|(?:[-+]?\d+[.,]\d+H$))?(?:(?:[-+]?\d+M)|(?:[-+]?\d+[.,]\d+M$))?(?:[-+]?\d+(?:[.,]\d+)?S)?)??$/, xt = /^(?!\.)(?!.*\.\.)([A-Z0-9_'+\-\.]*)[A-Z0-9_+-]@([A-Z0-9][A-Z0-9\-]*\.)+[A-Z]{2,}$/i, bt = "^(\\p{Extended_Pictographic}|\\p{Emoji_Component})+$";
+const pt = /^c[^\s-]{8,}$/i, yt = /^[0-9a-z]+$/, vt = /^[0-9A-HJKMNP-TV-Z]{26}$/, gt = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/i, _t = /^[a-z0-9_-]{21}$/i, xt = /^[-+]?P(?!$)(?:(?:[-+]?\d+Y)|(?:[-+]?\d+[.,]\d+Y$))?(?:(?:[-+]?\d+M)|(?:[-+]?\d+[.,]\d+M$))?(?:(?:[-+]?\d+W)|(?:[-+]?\d+[.,]\d+W$))?(?:(?:[-+]?\d+D)|(?:[-+]?\d+[.,]\d+D$))?(?:T(?=[\d+-])(?:(?:[-+]?\d+H)|(?:[-+]?\d+[.,]\d+H$))?(?:(?:[-+]?\d+M)|(?:[-+]?\d+[.,]\d+M$))?(?:[-+]?\d+(?:[.,]\d+)?S)?)??$/, bt = /^(?!\.)(?!.*\.\.)([A-Z0-9_'+\-\.]*)[A-Z0-9_+-]@([A-Z0-9][A-Z0-9\-]*\.)+[A-Z]{2,}$/i, kt = "^(\\p{Extended_Pictographic}|\\p{Emoji_Component})+$";
 let Se;
-const kt = /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/, wt = /^(([a-f0-9]{1,4}:){7}|::([a-f0-9]{1,4}:){0,6}|([a-f0-9]{1,4}:){1}:([a-f0-9]{1,4}:){0,5}|([a-f0-9]{1,4}:){2}:([a-f0-9]{1,4}:){0,4}|([a-f0-9]{1,4}:){3}:([a-f0-9]{1,4}:){0,3}|([a-f0-9]{1,4}:){4}:([a-f0-9]{1,4}:){0,2}|([a-f0-9]{1,4}:){5}:([a-f0-9]{1,4}:){0,1})([a-f0-9]{1,4}|(((25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([0-9]{1,2}))\.){3}((25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([0-9]{1,2})))$/, Tt = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/, ze = "((\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-((0[13578]|1[02])-(0[1-9]|[12]\\d|3[01])|(0[469]|11)-(0[1-9]|[12]\\d|30)|(02)-(0[1-9]|1\\d|2[0-8])))", Et = new RegExp(`^${ze}$`);
-function Ue(r) {
+const wt = /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/, Tt = /^(([a-f0-9]{1,4}:){7}|::([a-f0-9]{1,4}:){0,6}|([a-f0-9]{1,4}:){1}:([a-f0-9]{1,4}:){0,5}|([a-f0-9]{1,4}:){2}:([a-f0-9]{1,4}:){0,4}|([a-f0-9]{1,4}:){3}:([a-f0-9]{1,4}:){0,3}|([a-f0-9]{1,4}:){4}:([a-f0-9]{1,4}:){0,2}|([a-f0-9]{1,4}:){5}:([a-f0-9]{1,4}:){0,1})([a-f0-9]{1,4}|(((25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([0-9]{1,2}))\.){3}((25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([0-9]{1,2})))$/, Et = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/, Ue = "((\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-((0[13578]|1[02])-(0[1-9]|[12]\\d|3[01])|(0[469]|11)-(0[1-9]|[12]\\d|30)|(02)-(0[1-9]|1\\d|2[0-8])))", St = new RegExp(`^${Ue}$`);
+function Be(r) {
   let e = "([01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d";
   return r.precision ? e = `${e}\\.\\d{${r.precision}}` : r.precision == null && (e = `${e}(\\.\\d+)?`), e;
 }
-function St(r) {
-  return new RegExp(`^${Ue(r)}$`);
+function Zt(r) {
+  return new RegExp(`^${Be(r)}$`);
 }
-function Be(r) {
-  let e = `${ze}T${Ue(r)}`;
+function qe(r) {
+  let e = `${Ue}T${Be(r)}`;
   const t = [];
   return t.push(r.local ? "Z?" : "Z"), r.offset && t.push("([+-]\\d{2}:?\\d{2})"), e = `${e}(${t.join("|")})`, new RegExp(`^${e}$`);
 }
-function Zt(r, e) {
-  return !!((e === "v4" || !e) && kt.test(r) || (e === "v6" || !e) && wt.test(r));
+function Ct(r, e) {
+  return !!((e === "v4" || !e) && wt.test(r) || (e === "v6" || !e) && Tt.test(r));
 }
 class E extends g {
   _parse(e) {
@@ -855,43 +855,43 @@ class E extends g {
           message: a.message
         }), n.dirty());
       } else if (a.kind === "email")
-        xt.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
+        bt.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
           validation: "email",
           code: c.invalid_string,
           message: a.message
         }), n.dirty());
       else if (a.kind === "emoji")
-        Se || (Se = new RegExp(bt, "u")), Se.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
+        Se || (Se = new RegExp(kt, "u")), Se.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
           validation: "emoji",
           code: c.invalid_string,
           message: a.message
         }), n.dirty());
       else if (a.kind === "uuid")
-        vt.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
+        gt.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
           validation: "uuid",
           code: c.invalid_string,
           message: a.message
         }), n.dirty());
       else if (a.kind === "nanoid")
-        gt.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
+        _t.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
           validation: "nanoid",
           code: c.invalid_string,
           message: a.message
         }), n.dirty());
       else if (a.kind === "cuid")
-        mt.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
+        pt.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
           validation: "cuid",
           code: c.invalid_string,
           message: a.message
         }), n.dirty());
       else if (a.kind === "cuid2")
-        pt.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
+        yt.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
           validation: "cuid2",
           code: c.invalid_string,
           message: a.message
         }), n.dirty());
       else if (a.kind === "ulid")
-        yt.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
+        vt.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
           validation: "ulid",
           code: c.invalid_string,
           message: a.message
@@ -923,27 +923,27 @@ class E extends g {
           code: c.invalid_string,
           validation: { endsWith: a.value },
           message: a.message
-        }), n.dirty()) : a.kind === "datetime" ? Be(a).test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
+        }), n.dirty()) : a.kind === "datetime" ? qe(a).test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
           code: c.invalid_string,
           validation: "datetime",
           message: a.message
-        }), n.dirty()) : a.kind === "date" ? Et.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
+        }), n.dirty()) : a.kind === "date" ? St.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
           code: c.invalid_string,
           validation: "date",
           message: a.message
-        }), n.dirty()) : a.kind === "time" ? St(a).test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
+        }), n.dirty()) : a.kind === "time" ? Zt(a).test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
           code: c.invalid_string,
           validation: "time",
           message: a.message
-        }), n.dirty()) : a.kind === "duration" ? _t.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
+        }), n.dirty()) : a.kind === "duration" ? xt.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
           validation: "duration",
           code: c.invalid_string,
           message: a.message
-        }), n.dirty()) : a.kind === "ip" ? Zt(e.data, a.version) || (s = this._getOrReturnCtx(e, s), l(s, {
+        }), n.dirty()) : a.kind === "ip" ? Ct(e.data, a.version) || (s = this._getOrReturnCtx(e, s), l(s, {
           validation: "ip",
           code: c.invalid_string,
           message: a.message
-        }), n.dirty()) : a.kind === "base64" ? Tt.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
+        }), n.dirty()) : a.kind === "base64" ? Et.test(e.data) || (s = this._getOrReturnCtx(e, s), l(s, {
           validation: "base64",
           code: c.invalid_string,
           message: a.message
@@ -1165,7 +1165,7 @@ E.create = (r) => {
     ...v(r)
   });
 };
-function Ct(r, e) {
+function Nt(r, e) {
   const t = (r.toString().split(".")[1] || "").length, n = (e.toString().split(".")[1] || "").length, s = t > n ? t : n, a = parseInt(r.toFixed(s).replace(".", "")), i = parseInt(e.toFixed(s).replace(".", ""));
   return a % i / Math.pow(10, s);
 }
@@ -1204,7 +1204,7 @@ class A extends g {
         inclusive: a.inclusive,
         exact: !1,
         message: a.message
-      }), s.dirty()) : a.kind === "multipleOf" ? Ct(e.data, a.value) !== 0 && (n = this._getOrReturnCtx(e, n), l(n, {
+      }), s.dirty()) : a.kind === "multipleOf" ? Nt(e.data, a.value) !== 0 && (n = this._getOrReturnCtx(e, n), l(n, {
         code: c.not_multiple_of,
         multipleOf: a.value,
         message: a.message
@@ -2025,7 +2025,7 @@ class x extends g {
     });
   }
   keyof() {
-    return qe(_.objectKeys(this.shape));
+    return We(_.objectKeys(this.shape));
   }
 }
 x.create = (r, e) => new x({
@@ -2589,7 +2589,7 @@ oe.create = (r, e) => new oe({
   typeName: p.ZodLiteral,
   ...v(e)
 });
-function qe(r, e) {
+function We(r, e) {
   return new $({
     values: r,
     typeName: p.ZodEnum,
@@ -2609,7 +2609,7 @@ class $ extends g {
         code: c.invalid_type
       }), y;
     }
-    if (_e(this, X, "f") || De(this, X, new Set(this._def.values), "f"), !_e(this, X, "f").has(e.data)) {
+    if (_e(this, X, "f") || ze(this, X, new Set(this._def.values), "f"), !_e(this, X, "f").has(e.data)) {
       const t = this._getOrReturnCtx(e), n = this._def.values;
       return l(t, {
         received: t.data,
@@ -2654,7 +2654,7 @@ class $ extends g {
   }
 }
 X = /* @__PURE__ */ new WeakMap();
-$.create = qe;
+$.create = We;
 class ce extends g {
   constructor() {
     super(...arguments), K.set(this, void 0);
@@ -2669,7 +2669,7 @@ class ce extends g {
         code: c.invalid_type
       }), y;
     }
-    if (_e(this, K, "f") || De(this, K, new Set(_.getValidEnumValues(this._def.values)), "f"), !_e(this, K, "f").has(e.data)) {
+    if (_e(this, K, "f") || ze(this, K, new Set(_.getValidEnumValues(this._def.values)), "f"), !_e(this, K, "f").has(e.data)) {
       const s = _.objectValues(t);
       return l(n, {
         received: n.data,
@@ -2908,7 +2908,7 @@ we.create = (r) => new we({
   typeName: p.ZodNaN,
   ...v(r)
 });
-const Nt = Symbol("zod_brand");
+const Ot = Symbol("zod_brand");
 class Ie extends g {
   _parse(e) {
     const { ctx: t } = this._processInputParams(e), n = t.data;
@@ -2976,7 +2976,7 @@ le.create = (r, e) => new le({
   typeName: p.ZodReadonly,
   ...v(e)
 });
-function We(r, e = {}, t) {
+function He(r, e = {}, t) {
   return r ? H.create().superRefine((n, s) => {
     var a, i;
     if (!r(n)) {
@@ -2985,16 +2985,16 @@ function We(r, e = {}, t) {
     }
   }) : H.create();
 }
-const Ot = {
+const It = {
   object: x.lazycreate
 };
 var p;
 (function(r) {
   r.ZodString = "ZodString", r.ZodNumber = "ZodNumber", r.ZodNaN = "ZodNaN", r.ZodBigInt = "ZodBigInt", r.ZodBoolean = "ZodBoolean", r.ZodDate = "ZodDate", r.ZodSymbol = "ZodSymbol", r.ZodUndefined = "ZodUndefined", r.ZodNull = "ZodNull", r.ZodAny = "ZodAny", r.ZodUnknown = "ZodUnknown", r.ZodNever = "ZodNever", r.ZodVoid = "ZodVoid", r.ZodArray = "ZodArray", r.ZodObject = "ZodObject", r.ZodUnion = "ZodUnion", r.ZodDiscriminatedUnion = "ZodDiscriminatedUnion", r.ZodIntersection = "ZodIntersection", r.ZodTuple = "ZodTuple", r.ZodRecord = "ZodRecord", r.ZodMap = "ZodMap", r.ZodSet = "ZodSet", r.ZodFunction = "ZodFunction", r.ZodLazy = "ZodLazy", r.ZodLiteral = "ZodLiteral", r.ZodEnum = "ZodEnum", r.ZodEffects = "ZodEffects", r.ZodNativeEnum = "ZodNativeEnum", r.ZodOptional = "ZodOptional", r.ZodNullable = "ZodNullable", r.ZodDefault = "ZodDefault", r.ZodCatch = "ZodCatch", r.ZodPromise = "ZodPromise", r.ZodBranded = "ZodBranded", r.ZodPipeline = "ZodPipeline", r.ZodReadonly = "ZodReadonly";
 })(p || (p = {}));
-const It = (r, e = {
+const Rt = (r, e = {
   message: `Input not instance of ${r.name}`
-}) => We((t) => t instanceof r, e), He = E.create, Ye = A.create, Rt = we.create, jt = M.create, Ge = ee.create, At = L.create, Mt = xe.create, $t = te.create, Vt = re.create, Pt = H.create, Lt = P.create, Dt = R.create, zt = be.create, Ut = S.create, Bt = x.create, qt = x.strictCreate, Wt = ne.create, Ht = Te.create, Yt = se.create, Gt = O.create, Jt = ae.create, Xt = ke.create, Kt = D.create, Qt = B.create, Ft = ie.create, er = oe.create, tr = $.create, rr = ce.create, nr = Y.create, $e = Z.create, sr = C.create, ar = V.create, ir = Z.createWithPreprocess, or = fe.create, cr = () => He().optional(), dr = () => Ye().optional(), ur = () => Ge().optional(), lr = {
+}) => He((t) => t instanceof r, e), Ye = E.create, Ge = A.create, jt = we.create, At = M.create, Je = ee.create, Mt = L.create, $t = xe.create, Vt = te.create, Pt = re.create, Lt = H.create, Dt = P.create, zt = R.create, Ut = be.create, Bt = S.create, qt = x.create, Wt = x.strictCreate, Ht = ne.create, Yt = Te.create, Gt = se.create, Jt = O.create, Xt = ae.create, Kt = ke.create, Qt = D.create, Ft = B.create, er = ie.create, tr = oe.create, rr = $.create, nr = ce.create, sr = Y.create, $e = Z.create, ar = C.create, ir = V.create, or = Z.createWithPreprocess, cr = fe.create, dr = () => Ye().optional(), ur = () => Ge().optional(), lr = () => Je().optional(), fr = {
   string: (r) => E.create({ ...r, coerce: !0 }),
   number: (r) => A.create({ ...r, coerce: !0 }),
   boolean: (r) => ee.create({
@@ -3003,14 +3003,14 @@ const It = (r, e = {
   }),
   bigint: (r) => M.create({ ...r, coerce: !0 }),
   date: (r) => L.create({ ...r, coerce: !0 })
-}, fr = y;
+}, hr = y;
 var q = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   defaultErrorMap: W,
-  setErrorMap: ft,
+  setErrorMap: ht,
   getErrorMap: ve,
   makeIssue: ge,
-  EMPTY_PATH: ht,
+  EMPTY_PATH: mt,
   addIssueToContext: l,
   ParseStatus: b,
   INVALID: y,
@@ -3029,7 +3029,7 @@ var q = /* @__PURE__ */ Object.freeze({
   ZodParsedType: f,
   getParsedType: j,
   ZodType: g,
-  datetimeRegex: Be,
+  datetimeRegex: qe,
   ZodString: E,
   ZodNumber: A,
   ZodBigInt: M,
@@ -3064,89 +3064,88 @@ var q = /* @__PURE__ */ Object.freeze({
   ZodDefault: de,
   ZodCatch: ue,
   ZodNaN: we,
-  BRAND: Nt,
+  BRAND: Ot,
   ZodBranded: Ie,
   ZodPipeline: fe,
   ZodReadonly: le,
-  custom: We,
+  custom: He,
   Schema: g,
   ZodSchema: g,
-  late: Ot,
+  late: It,
   get ZodFirstPartyTypeKind() {
     return p;
   },
-  coerce: lr,
-  any: Pt,
-  array: Ut,
-  bigint: jt,
-  boolean: Ge,
-  date: At,
-  discriminatedUnion: Ht,
+  coerce: fr,
+  any: Lt,
+  array: Bt,
+  bigint: At,
+  boolean: Je,
+  date: Mt,
+  discriminatedUnion: Yt,
   effect: $e,
-  enum: tr,
-  function: Qt,
-  instanceof: It,
-  intersection: Yt,
-  lazy: Ft,
-  literal: er,
-  map: Xt,
-  nan: Rt,
-  nativeEnum: rr,
-  never: Dt,
-  null: Vt,
-  nullable: ar,
-  number: Ye,
-  object: Bt,
-  oboolean: ur,
-  onumber: dr,
-  optional: sr,
-  ostring: cr,
-  pipeline: or,
-  preprocess: ir,
-  promise: nr,
-  record: Jt,
-  set: Kt,
-  strictObject: qt,
-  string: He,
-  symbol: Mt,
+  enum: rr,
+  function: Ft,
+  instanceof: Rt,
+  intersection: Gt,
+  lazy: er,
+  literal: tr,
+  map: Kt,
+  nan: jt,
+  nativeEnum: nr,
+  never: zt,
+  null: Pt,
+  nullable: ir,
+  number: Ge,
+  object: qt,
+  oboolean: lr,
+  onumber: ur,
+  optional: ar,
+  ostring: dr,
+  pipeline: cr,
+  preprocess: or,
+  promise: sr,
+  record: Xt,
+  set: Qt,
+  strictObject: Wt,
+  string: Ye,
+  symbol: $t,
   transformer: $e,
-  tuple: Gt,
-  undefined: $t,
-  union: Wt,
-  unknown: Lt,
-  void: zt,
-  NEVER: fr,
+  tuple: Jt,
+  undefined: Vt,
+  union: Ht,
+  unknown: Dt,
+  void: Ut,
+  NEVER: hr,
   ZodIssueCode: c,
-  quotelessJson: lt,
+  quotelessJson: ft,
   ZodError: w
 });
-const hr = q.object({
+const mr = q.object({
   label: q.string(),
   url: q.string()
-}), Je = hr.extend({
-  children: q.lazy(() => q.array(Je).optional())
-}), mr = q.array(Je), pr = async ({ localDev: r = !1 }) => {
+}), Xe = mr.extend({
+  children: q.lazy(() => q.array(Xe).optional())
+}), pr = q.array(Xe), yr = async ({ localDev: r = !1 }) => {
   const t = await fetch(
     `${r ? "http://localhost:9999" : "https://k5-leitertraining.de"}/.netlify/functions/get-k5-navigation`
   ).then((i) => i.json()), {
     success: n,
     data: s,
     error: a
-  } = mr.safeParse(t);
+  } = pr.safeParse(t);
   return n ? s : (console.error(a.message), []);
-}, yr = () => Pe(document.head, () => import("./navbarStyle-8acA2Ym-.js")), vr = () => Math.random().toString(36).substr(2, 9), Xe = (r) => {
+}, vr = () => Le(document.head, () => import("./navbarStyle-8acA2Ym-.js")), gr = () => Math.random().toString(36).substr(2, 9), Ke = (r) => {
   var e;
   return {
-    id: vr(),
+    id: gr(),
     title: r.label,
     goTo: "url",
     url: r.url,
     goToId: "",
     openInNewTab: !1,
-    childs: ((e = r.children) == null ? void 0 : e.map(Xe)) ?? []
+    childs: ((e = r.children) == null ? void 0 : e.map(Ke)) ?? []
   };
-}, gr = (r) => {
-  console.log(r);
+}, Ve = (r) => {
   const e = window.__NUXT__.data.pageData.elements.find(
     (t) => t.meta === "nav-menu"
   );
@@ -3154,15 +3153,23 @@ const hr = q.object({
     console.error("Error when applying navigation: nav-menu element not found");
     return;
   }
-  e.extra.menuItems.value = e.extra.menuItems.value = r.map(Xe);
-}, wr = async ({ localDev: r = !1 } = {}) => {
-  await yr();
-  const e = await pr({ localDev: r });
-  gr(e);
+  e.extra.menuItems.value = r.map(Ke);
+}, _r = (r, { interval: e = 100, timeout: t = 5e3 } = {}) => {
+  Ve(r);
+  const n = setInterval(() => {
+    Ve(r);
+  }, e);
+  setTimeout(() => {
+    clearInterval(n);
+  }, t);
+}, Tr = async ({ localDev: r = !1 } = {}) => {
+  await vr();
+  const e = await yr({ localDev: r });
+  _r(e);
 };
 export {
-  wr as navbarControl,
-  kr as redirectAfterFormSubmission,
-  xr as validateEmail,
-  br as validateGroupName
+  Tr as navbarControl,
+  wr as redirectAfterFormSubmission,
+  br as validateEmail,
+  kr as validateGroupName
 };
