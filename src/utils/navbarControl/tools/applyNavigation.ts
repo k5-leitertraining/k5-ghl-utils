@@ -54,8 +54,6 @@ const toNuxtMenuItem = (customMenuItem: CustomMenuItem): NuxtMenuItem => {
 }
 
 export const applyNavigation = (menuItems: CustomMenuItem[]) => {
-  console.log(menuItems)
-
   const navMenuElement = window.__NUXT__.data.pageData.elements.find(
     (e) => e.meta === 'nav-menu',
   )
@@ -63,6 +61,20 @@ export const applyNavigation = (menuItems: CustomMenuItem[]) => {
     console.error('Error when applying navigation: nav-menu element not found')
     return
   }
-  navMenuElement.extra.menuItems.value = navMenuElement.extra.menuItems.value =
-    menuItems.map(toNuxtMenuItem)
+  navMenuElement.extra.menuItems.value = menuItems.map(toNuxtMenuItem)
+}
+
+export const constantlyApplyNavigation = (
+  menuItems: CustomMenuItem[],
+  { interval = 100, timeout = 5000 } = {},
+) => {
+  applyNavigation(menuItems)
+
+  const intervalId = setInterval(() => {
+    applyNavigation(menuItems)
+  }, interval)
+
+  setTimeout(() => {
+    clearInterval(intervalId)
+  }, timeout)
 }
