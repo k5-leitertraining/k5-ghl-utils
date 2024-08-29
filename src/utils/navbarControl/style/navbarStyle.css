@@ -1,5 +1,5 @@
-body .nav-menu .nav-menu-item a[href="https://onecommunity.mn.co/sign_in"], body #nav-menu-popup .nav-menu .nav-menu-item a[href="https://onecommunity.mn.co/sign_in"]
-{
+body .nav-menu-item a[href*='onecommunity.mn.co'],
+body #nav-menu-popup .nav-menu .nav-menu-item a[href*='onecommunity.mn.co'] {
   color: #fafafa;
   padding-top: 16px;
   padding-right: 30px;
@@ -47,7 +47,6 @@ body .nav-menu .nav-menu-item a[href="https://onecommunity.mn.co/sign_in"], body
   font-weight: 600;
 }
 
-a[href="https://onecommunity.mn.co/sign_in"]:hover
-{
+a[href*='onecommunity.mn.co']:hover {
   transform: scale(1.02) translate(0px, -3px);
 }

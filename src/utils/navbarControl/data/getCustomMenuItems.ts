@@ -16,103 +16,19 @@ export const CustomMenuItemSchema: z.ZodType<CustomMenuItem> =
 
 export const CustomMenuItemsSchema = z.array(CustomMenuItemSchema)
 
-export const getCustomMenuItems = async () => {
+export const getCustomMenuItems = async ({ localDev = false }) => {
+  const host = localDev
+    ? 'http://localhost:9999'
+    : 'https://k5-leitertraining.de'
+  const result = await fetch(
+    `${host}/.netlify/functions/get-k5-navigation`,
+  ).then((response) => response.json() as Promise<unknown>)
   const {
-    data: items,
     success,
+    data: items,
     error,
-  } = await CustomMenuItemsSchema.safeParseAsync([
-    {
-      label: 'Kurse',
-      url: 'https://neu.k5-leitertraining.de/#courses',
-      children: [
-        {
-          label: '00 Einflussnehmerkurs',
-          url: 'https://go.k5-leitertraining.de/einflussnehmerkurs-anmeldung',
-        },
-        {
-          label: '01 Leiter-Werden-Kurs',
-          url: 'https://go.k5-leitertraining.de/leiter-werden-kurs-info',
-        },
-        {
-          label: '02 Gruppenleiterkurs',
-          url: 'https://go.k5-leitertraining.de/gruppenleiterkurs-info',
-        },
-        {
-          label: '03 Bereichsleiterkurs',
-          url: 'https://go.k5-leitertraining.de/bereichsleiterkursseite',
-        },
-        {
-          label: '04 Gesamtleiterkurs',
-          url: 'https://go.k5-leitertraining.de/gesamtleiterkurs-info',
-        },
-        {
-          label: 'Lerngruppen Info',
-          url: 'https://go.k5-leitertraining.de/en-lerngruppen',
-        },
-        {
-          label: 'K5 Gruppen verwalten',
-          url: 'https://go.k5-leitertraining.de/en-gruppenanmeldungen-info',
-        },
-      ],
-    },
-    {
-      label: 'Events',
-      url: 'https://go.k5-leitertraining.de/konferenz24-home',
-      children: [
-        {
-          label: 'Rewatch: K5 Next Steps Event',
-          url: 'https://go.k5-leitertraining.de/k5-2024-next-steps-event',
-        },
-        {
-          label: 'K5 Leiterkonferenz Wuppertal',
-          url: 'https://go.k5-leitertraining.de/konferenz24-wuppertal',
-        },
-      ],
-    },
-    {
-      label: 'Für Kirchen & Org.',
-      url: 'https://go.k5-leitertraining.de/partner',
-      children: [
-        {
-          label: 'Preise & Modelle',
-          url: 'https://go.k5-leitertraining.de/k5-gruppen-preise',
-        },
-        {
-          label: 'Gemeindel. & Pastorennetzwerk',
-          url: 'https://go.k5-leitertraining.de/gemeindeleiternetzwerk',
-        },
-        {
-          label: 'Entwickler Task Force',
-          url: 'https://go.k5-leitertraining.de/entwicklung',
-        },
-        {
-          label: 'Flexkurse (Coming 2025)',
-          url: 'https://go.k5-leitertraining.de/flexkurse',
-        },
-        {
-          label: 'Key Workshops (Coming 2025)',
-          url: 'https://go.k5-leitertraining.de/workshops',
-        },
-        {
-          label: '1% Coaching (Coming 2025)',
-          url: 'https://go.k5-leitertraining.de/coaching',
-        },
-        {
-          label: 'Jetzt Partner werden',
-          url: 'https://go.k5-leitertraining.de/partnerkirche-org-anmeldung',
-        },
-      ],
-    },
-    {
-      label: 'NEU: Leitertest',
-      url: 'https://neu.k5-leitertraining.de/leitertest#/',
-    },
-    {
-      label: 'Zur Kursplattform',
-      url: 'https://onecommunity.mn.co/sign_in',
-    },
-  ])
+  } = CustomMenuItemsSchema.safeParse(result)
+
   if (!success) {
     console.error(error.message)
     return []
