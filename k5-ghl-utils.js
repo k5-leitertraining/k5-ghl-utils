@@ -44,7 +44,7 @@ const tt = async ({
     return;
   G = new AbortController();
   const a = G.signal, o = await fetch(
-    `${n ? "http://localhost:9999" : "https://k5-leitertraining.de"}/.netlify/functions/is-registered?email=${s}&course=${t}`,
+    `${n ? "http://localhost:9999" : "https://netlify.k5-leitertraining.de"}/.netlify/functions/is-registered?email=${s}&course=${t}`,
     { signal: a }
   ).then(
     (h) => h.json()
@@ -100,7 +100,7 @@ const nt = async ({
     return a();
   J = new AbortController();
   const i = J.signal, d = await fetch(
-    `${t ? "http://localhost:9999" : "https://k5-leitertraining.de"}/.netlify/functions/ortsgruppenname-is-valid?orgName=${r}&groupName=${e}`,
+    `${t ? "http://localhost:9999" : "https://netlify.k5-leitertraining.de"}/.netlify/functions/ortsgruppenname-is-valid?orgName=${r}&groupName=${e}`,
     { signal: i }
   ).then(
     (h) => h.json()
@@ -205,7 +205,7 @@ const ct = async ({
   email: r,
   localDev: e = !1
 }) => r ? (await fetch(
-  `${e ? "http://localhost:9999" : "https://k5-leitertraining.de"}/.netlify/functions/get-redirect-url?email=${r}`
+  `${e ? "http://localhost:9999" : "https://netlify.k5-leitertraining.de"}/.netlify/functions/get-redirect-url?email=${r}`
 ).then(
   (a) => a.json()
 )).redirectUrl : "", dt = `<svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -3127,7 +3127,7 @@ const mr = q.object({
   children: q.lazy(() => q.array(Xe).optional())
 }), pr = q.array(Xe), yr = async ({ localDev: r = !1 }) => {
   const t = await fetch(
-    `${r ? "http://localhost:9999" : "https://k5-leitertraining.de"}/.netlify/functions/get-k5-navigation`
+    `${r ? "http://localhost:9999" : "https://netlify.k5-leitertraining.de"}/.netlify/functions/get-k5-navigation`
   ).then((i) => i.json()), {
     success: n,
     data: s,
