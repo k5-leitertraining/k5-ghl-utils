@@ -19,7 +19,7 @@ export const CustomMenuItemsSchema = z.array(CustomMenuItemSchema)
 export const getCustomMenuItems = async ({ localDev = false }) => {
   const host = localDev
     ? 'http://localhost:9999'
-    : 'https://k5-leitertraining.de'
+    : 'https://netlify.k5-leitertraining.de'
   const result = await fetch(
     `${host}/.netlify/functions/get-k5-navigation`,
   ).then((response) => response.json() as Promise<unknown>)

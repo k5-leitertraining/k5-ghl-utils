@@ -9,7 +9,7 @@ export const getRedirectUrl = async ({
 
   const host = localDev
     ? 'http://localhost:9999'
-    : 'https://k5-leitertraining.de'
+    : 'https://netlify.k5-leitertraining.de'
   const result = await fetch(
     `${host}/.netlify/functions/get-redirect-url?email=${email}`,
   ).then(

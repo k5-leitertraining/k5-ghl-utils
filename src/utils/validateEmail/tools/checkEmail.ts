@@ -22,7 +22,7 @@ const _checkEmail = async ({
   const signal = lastAbortController.signal
   const host = localDev
     ? 'http://localhost:9999'
-    : 'https://k5-leitertraining.de'
+    : 'https://netlify.k5-leitertraining.de'
   const result = await fetch(
     `${host}/.netlify/functions/is-registered?email=${email}&course=${courseId}`,
     { signal },
